@@ -1,24 +1,60 @@
-.login-form{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
- }
- .login-button{
-     width: 100%;
-     margin-top: 10px;
-     border-radius: 10px;
-     border:1px solid green;
-     background-color: green;
-     color: #fff;
-     height: 50px;
- 
- }
- input{
-     width: 100%!important;
-     height: 50px;
-     margin-top: 10px;
- }
- .error{
-     color: red;   
- }
+/* Go Home Button */
+.go-home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #333; /* Darker color */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it appears above other content */
+  }
+  
+  /* Background Overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.384); /* Semi-transparent black */
+    z-index: -1; /* Ensure it appears below the button */
+  }
+  
+  /* Login Form Styling */
+  .login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-button {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid green;
+    background-color: green;
+    color: #fff;
+    height: 50px;
+  }
+  
+  input {
+    width: 100% !important;
+    height: 50px;
+    margin-top: 10px;
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .go-home-button {
+      font-size: 14px;
+    }
+  }
+  

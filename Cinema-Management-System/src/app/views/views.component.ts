@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { MovieService } from './movies/movies-service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-views',
@@ -14,11 +16,25 @@ export class ViewsComponent implements OnInit {
   selectedCategory: string | null = null;
   selectedYear: string | null = null;
 
+  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
+
+  private usernameSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+  username$: Observable<string | null> = this.usernameSubject.asObservable();
+
   constructor(
     private movieService: MovieService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    private authService: AuthService
+  ) {
+
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    this.isLoggedInSubject.next(isLoggedIn);
+  
+    const loggedInUsername = localStorage.getItem('loggedInUsername');
+    this.usernameSubject.next(loggedInUsername);
+  }
 
   ngOnInit(): void {
     this.fetchCategories();
@@ -34,7 +50,42 @@ export class ViewsComponent implements OnInit {
         this.fetchAllMovies();
       }
     });
+    
   }
+
+  login(email: string, password: string): boolean {
+    // Check hardcoded credentials
+    if (email === 'admin@example.com' && password === 'password') {
+      localStorage.setItem('isLoggedIn', 'true');
+      this.isLoggedInSubject.next(true);
+      return true;
+    }
+  
+    const userString = localStorage.getItem('userData');
+    if (userString) {
+      const users: any[] = JSON.parse(userString);
+      const user = users.find(u => u.email === email);
+      if (user && user.password === password) {
+        localStorage.setItem('isLoggedIn', 'true');
+        this.isLoggedInSubject.next(true);
+        this.usernameSubject.next(user.username);
+        // Store isLoggedIn and username in localStorage
+        localStorage.setItem('loggedInUserEmail', user.email);
+        localStorage.setItem('loggedInUsername', user.username);
+        return true;
+      }
+    }
+  
+    return false;
+  }
+
+  logout(): void {
+    localStorage.removeItem('isLoggedIn');
+    this.isLoggedInSubject.next(false);
+    this.usernameSubject.next(null);
+  }
+
+
 
   fetchCategories() {
     const categoriesString = localStorage.getItem('categories');
@@ -95,4 +146,5 @@ export class ViewsComponent implements OnInit {
       replaceUrl: true
     });
   }
+
 }

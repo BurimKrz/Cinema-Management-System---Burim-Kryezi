@@ -1,3 +1,4 @@
+<body>
 <div class="container-fluid p-0">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -28,7 +29,7 @@
                 <a class="dropdown-item" (click)="filterMoviesByCategory(category)">{{ category }}</a>
               </li>
               <li>
-                <a class="dropdown-item bg-info" routerLink="categories/all-categories">View All</a>
+                <a class="dropdown-item bg-info" routerLink="categories/all-categories">View All Categories</a>
               </li>
             </ul>
           </li>
@@ -46,9 +47,28 @@
           </li>
           
         </ul>
-        <div class="d-flex">
-          <a routerLink="login" class="nav-link text-white">Log out</a>
-        </div>
+
+        <ul class="navbar-nav">
+          <ng-container *ngIf="isLoggedIn$ | async; else loggedOutNavbar">
+            <!-- Displayed when logged in -->
+            <li class="nav-item">
+              <span class="nav-link text-decoration-none welcome btn">Welcome, {{ username$ | async }}</span>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-link nav-link button1 button" (click)="logout()">Logout</button>
+            </li>
+          </ng-container>
+          <ng-template #loggedOutNavbar>
+            <!-- Displayed when logged out -->
+            <li class="nav-item">
+              <a class="nav-link button1 button" routerLink="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link button1 button" routerLink="/signup">SignUp</a>
+            </li>
+          </ng-template>
+        </ul>
+
       </div>
     </div>
     
@@ -57,3 +77,4 @@
     <router-outlet></router-outlet>
   </div>
 </div>
+</body>
