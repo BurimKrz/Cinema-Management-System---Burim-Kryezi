@@ -93,7 +93,6 @@
   max-width: 500px;
 }
 
-/* Modal Header */
 .modal-header {
   padding-bottom: 10px;
   border-bottom: 1px solid #ccc;
@@ -103,7 +102,6 @@
   margin: 0;
 }
 
-/* Modal Body */
 .modal-body {
   padding: 20px 0;
 }
@@ -114,7 +112,6 @@
   text-align: right;
 }
 
-/* Close Button */
 .close {
   color: #aaa;
   float: right;
@@ -129,7 +126,6 @@
   text-decoration: none;
 }
 
-/* Responsive */
 @media screen and (max-width: 768px) {
   .modal-content {
     width: 80%;

@@ -29,14 +29,14 @@ export class SignupComponent implements OnInit {
       const formData = this.signupForm.value;
       this.authService.signup(formData).subscribe((res: any) => {
         if (res) {
-          this.router.navigate(['login']); // Redirect to login after successful signup
+          this.router.navigate(['login']);
         } else {
-          window.alert('Signup failed'); // Handle signup failure
+          window.alert('Signup failed');
         }
         this.isLoading = false;
-      }, (error: any) => { // Explicitly declare the error parameter type
-        console.error('Signup error:', error); // Log error
-        window.alert('An error occurred. Please try again.'); // Inform user about error
+      }, (error: any) => {
+        console.error('Signup error:', error);
+        window.alert('An error occurred. Please try again.');
         this.isLoading = false;
       });
     }

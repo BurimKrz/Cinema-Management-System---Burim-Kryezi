@@ -18,7 +18,7 @@ body {
 .movie-cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Align cards evenly */
+  justify-content: space-between;
 }
 
 .movie-card {
@@ -42,8 +42,8 @@ body {
 }
 
 .movie-card h3 a {
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Inherit the text color */
+  text-decoration: none;
+  color: inherit;
 }
 
 .movie-card p {
@@ -51,10 +51,10 @@ body {
   font-size: 14px;
 }
 
-/* Media query for smaller screens */
+
 @media screen and (max-width: 768px) {
   .movie-card {
-    width: calc(100% - 20px); /* Single card per row */
+    width: calc(100% - 20px); 
   }
 }
 

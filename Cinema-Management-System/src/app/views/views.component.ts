@@ -54,7 +54,6 @@ export class ViewsComponent implements OnInit {
   }
 
   login(email: string, password: string): boolean {
-    // Check hardcoded credentials
     if (email === 'admin@example.com' && password === 'password') {
       localStorage.setItem('isLoggedIn', 'true');
       this.isLoggedInSubject.next(true);
@@ -69,7 +68,6 @@ export class ViewsComponent implements OnInit {
         localStorage.setItem('isLoggedIn', 'true');
         this.isLoggedInSubject.next(true);
         this.usernameSubject.next(user.username);
-        // Store isLoggedIn and username in localStorage
         localStorage.setItem('loggedInUserEmail', user.email);
         localStorage.setItem('loggedInUsername', user.username);
         return true;

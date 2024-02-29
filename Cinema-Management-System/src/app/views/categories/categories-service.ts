@@ -30,7 +30,7 @@ export class CategoriesService {
     if (isDuplicate) {
       throw new Error('A category with this name already exists.');
     }
-    category.id = new Date().getTime(); // This line will generate a unique id
+    category.id = new Date().getTime();
     categories.push(category);
     localStorage.setItem(this.localStorageKey, JSON.stringify(categories));
   }

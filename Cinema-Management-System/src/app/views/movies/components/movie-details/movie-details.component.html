@@ -1,15 +1,12 @@
 <div class="container-fluid">
     <div class="header">
       <h1>{{ movieDetails?.name }} Details</h1>
-      <!-- Edit Details Button -->
       <a [routerLink]="'/movies/edit-movie/' + movieDetails?.id" [queryParams]="{ movieId: movieDetails?.id}">
         <button class="btn btn-primary">Edit Details</button>
       </a>
-      <!-- Delete Button -->
       <button class="btn btn-danger" (click)="deleteMovie(movieDetails)">Delete</button>
     </div>
     <div class="movie-details">
-      <!-- Display Movie Details -->
       <ng-container *ngIf="movieDetails">
         <div>
           <label for="name"><b>Name:</b></label>
@@ -35,7 +32,6 @@
     </div>
   </div>
   
-  <!-- Delete Movie Modal -->
   <div *ngIf="deleteMovieModal" class="modal">
     <div class="modal-content">
       <span class="close" (click)="closeDeleteMovieModal()">&times;</span>

@@ -30,13 +30,13 @@
 
 .content {
   overflow: auto;
-  height: calc(100vh - 56px); /* Adjust based on navbar height */
+  height: calc(100vh - 56px); /
 }
 
 .movie-icon {
-  font-size: 1.5rem; /* Adjust size as needed */
+  font-size: 1.5rem; 
   margin-right: 5px;
-  transition: transform 0.3s ease-in-out; /* Add transition for animation */
+  transition: transform 0.3s ease-in-out; 
 }
 
 .movie-icon:hover {

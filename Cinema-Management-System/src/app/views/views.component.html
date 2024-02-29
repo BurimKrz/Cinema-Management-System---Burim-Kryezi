@@ -50,7 +50,6 @@
 
         <ul class="navbar-nav">
           <ng-container *ngIf="isLoggedIn$ | async; else loggedOutNavbar">
-            <!-- Displayed when logged in -->
             <li class="nav-item">
               <span class="nav-link text-decoration-none welcome btn">Welcome, {{ username$ | async }}</span>
             </li>
@@ -59,7 +58,6 @@
             </li>
           </ng-container>
           <ng-template #loggedOutNavbar>
-            <!-- Displayed when logged out -->
             <li class="nav-item">
               <a class="nav-link button1 button" routerLink="/login">Login</a>
             </li>
