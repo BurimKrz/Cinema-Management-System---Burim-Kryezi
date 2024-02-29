@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="header">
+      <h1>{{ movieDetails?.name }} Details</h1>
+      <!-- Edit Details Button -->
+      <a [routerLink]="'/movies/edit-movie/' + movieDetails?.id" [queryParams]="{ movieId: movieDetails?.id}">
+        <button class="btn btn-primary">Edit Details</button>
+      </a>
+      <!-- Delete Button -->
+      <button class="btn btn-danger" (click)="deleteMovie(movieDetails)">Delete</button>
+    </div>
+    <div class="movie-details">
+      <!-- Display Movie Details -->
+      <ng-container *ngIf="movieDetails">
+        <div>
+          <label for="name"><b>Name:</b></label>
+          <p>{{ movieDetails?.name }}</p>
+        </div>
+        <div *ngIf="movieDetails.director">
+          <label for="director"><b>Director:</b></label>
+          <p>{{ movieDetails?.director }}</p>
+        </div>
+        <div *ngIf="movieDetails.release">
+          <label for="release"><b>Release:</b></label>
+          <p>{{ movieDetails?.release }}</p>
+        </div>
+        <div *ngIf="movieDetails.synopsis">
+          <label for="synopsis"><b>Synopsis:</b></label>
+          <p>{{ movieDetails?.synopsis }}</p>
+        </div>
+        <div *ngIf="movieDetails.category">
+          <label for="category"><b>Category:</b></label>
+          <p>{{ movieDetails?.category }}</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  
+  <!-- Delete Movie Modal -->
+  <div *ngIf="deleteMovieModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeDeleteMovieModal()">&times;</span>
+      <div class="modal-header">
+        <h2>Delete Movie</h2>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the movie <strong>{{ clickedMovieData?.name }}</strong>?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" (click)="deleteMovieFromTable(clickedMovieData?.id)">Delete</button>
+        <button class="btn btn-secondary" (click)="closeDeleteMovieModal()">Cancel</button>
+      </div>
+    </div>
+  </div>

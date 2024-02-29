@@ -1,0 +1,48 @@
+<div class="create-movie-form">
+  <form [formGroup]="createMovieForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" required>
+      <div *ngIf="createMovieForm.get('name').touched && createMovieForm.get('name').errors" class="error-message">
+        <small class="text-danger" *ngIf="createMovieForm.get('name').errors['required']">Name is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="director">Director:</label>
+      <input type="text" id="director" formControlName="director" required>
+      <div *ngIf="createMovieForm.get('director').touched && createMovieForm.get('director').errors" class="error-message">
+        <small class="text-danger" *ngIf="createMovieForm.get('director').errors['required']">Director is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="release">Release Year:</label>
+      <input type="date" id="release" formControlName="release" required>
+      <div *ngIf="createMovieForm.get('release').touched && createMovieForm.get('release').errors" class="error-message">
+        <small class="text-danger" *ngIf="createMovieForm.get('release').errors['required']">Release Year is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="synopsis">Synopsis:</label>
+      <textarea id="synopsis" formControlName="synopsis" rows="4" required></textarea>
+      <div *ngIf="createMovieForm.get('synopsis').touched && createMovieForm.get('synopsis').errors" class="error-message">
+        <small class="text-danger" *ngIf="createMovieForm.get('synopsis').errors['required']">Synopsis is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select id="category" formControlName="category" required>
+        <option value="">Select Category</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+      <div *ngIf="createMovieForm.get('category').touched && createMovieForm.get('category').errors" class="error-message">
+        <small class="text-danger" *ngIf="createMovieForm.get('category').errors['required']">Category is required.</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!createMovieForm.valid">Add Movie</button>
+  </form>
+</div>

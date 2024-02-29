@@ -1,0 +1,16 @@
+<div class="create-category-form">
+  <form [formGroup]="createCategoryForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" formControlName="name" required class="text-area">
+         
+          <div *ngIf="createCategoryForm.get('name').touched && createCategoryForm.get('name').errors">
+              <small class="text-danger" *ngIf="createCategoryForm.get('name').errors['required']">
+                Name is required.
+              </small>
+          </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!createCategoryForm.valid">Create Category</button>
+  </form>
+</div>

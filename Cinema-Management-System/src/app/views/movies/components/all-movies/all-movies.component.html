@@ -1,0 +1,13 @@
+<div class="main-content">
+  <button [routerLink]="['/movies/create-movie']" type="button" class="btn btn-primary create-new-button">Add new Movie</button>
+  <div class="movie-cards">
+    <div class="movie-card" *ngFor="let item of movieList">
+      <div class="card-content">
+        <h3><a [routerLink]="'/movies/movie-details/' + item.id" [queryParams]="{ movieId: item.id}">
+          {{ item.name }}</a></h3>
+        <p *ngIf="item.release">Release Year: {{ extractYear(item.release) }}</p>
+        <p *ngIf="item.category">Category: {{ item.category }}</p>
+      </div>
+    </div>
+  </div>
+</div>

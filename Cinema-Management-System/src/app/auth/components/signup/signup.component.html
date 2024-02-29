@@ -1,0 +1,33 @@
+<div class="container-fluid signup-form" [formGroup]="signupForm">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <h1>Sign up</h1>
+      <a [routerLink]="['/login']" class="text-decoration-none text-black">Have an account? Login</a>
+      <div class="form-group">
+        <input type="text" placeholder="Username" class="form-control" formControlName="username">
+        <div class="error" *ngIf="signupForm.get('username')?.hasError('required') && signupForm.get('username')?.touched">
+          Username is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Email" class="form-control" formControlName="email">
+        <div class="error" *ngIf="signupForm.get('email')?.hasError('required') && signupForm.get('email')?.touched">
+          Email is required.
+        </div>
+        <div class="error" *ngIf="signupForm.get('email')?.hasError('email') && signupForm.get('email')?.touched">
+          Invalid email format.
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Password" class="form-control" formControlName="password">
+        <div class="error" *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched">
+          Password is required.
+        </div>
+        <div class="error" *ngIf="signupForm.get('password')?.hasError('minlength') && signupForm.get('password')?.touched">
+          Password should be at least 6 characters long.
+        </div>
+      </div>
+      <button class="btn btn-success signup-button" (click)="submitForm()" [disabled]="signupForm.invalid">Signup</button>
+    </div>
+  </div>
+</div>

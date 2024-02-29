@@ -1,0 +1,59 @@
+<div class="container-fluid p-0">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <a class="navbar-brand d-flex align-items-center" routerLinkActive="active" routerLink="movies/all-movies">
+          Movies
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="movies/all-movies">
+              <i class="fa fa-film" aria-hidden="true"></i> 
+              Movies
+            </a>
+          </li>
+
+          <li class="nav-item dropdown" id="categoriesDropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-gg-circle" aria-hidden="true"></i> Categories
+            </a>
+            
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li *ngFor="let category of categories">
+                <a class="dropdown-item" (click)="filterMoviesByCategory(category)">{{ category }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item bg-info" routerLink="categories/all-categories">View All</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav-item dropdown" id="yearDropdown">
+            <a class="nav-link dropdown-toggle" id="yearDropdownMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-calendar" aria-hidden="true"></i> 
+              Year
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="yearDropdownMenu">
+              <li *ngFor="let year of years">
+                <a class="dropdown-item" (click)="filterMoviesByYear(year)">{{ year }}</a>
+              </li>
+            </ul>
+          </li>
+          
+        </ul>
+        <div class="d-flex">
+          <a routerLink="login" class="nav-link text-white">Log out</a>
+        </div>
+      </div>
+    </div>
+    
+  </nav>
+  <div class="p-4 content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

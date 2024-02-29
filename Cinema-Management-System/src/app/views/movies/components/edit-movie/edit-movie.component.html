@@ -1,0 +1,45 @@
+<div class="edit-movie-form">
+    <form [formGroup]="editMovieForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name" required>
+        <div *ngIf="editMovieForm.get('name').touched && editMovieForm.get('name').errors" class="error-message">
+          <small class="text-danger" *ngIf="editMovieForm.get('name').errors['required']">Name is required.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="director">Director:</label>
+        <input type="text" id="director" formControlName="director" required>
+        <div *ngIf="editMovieForm.get('director').touched && editMovieForm.get('director').errors" class="error-message">
+          <small class="text-danger" *ngIf="editMovieForm.get('director').errors['required']">Director is required.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="release">Release:</label>
+        <input type="date" id="release" formControlName="release" required>
+        <div *ngIf="editMovieForm.get('release').touched && editMovieForm.get('release').errors" class="error-message">
+          <small class="text-danger" *ngIf="editMovieForm.get('release').errors['required']">Release Date is required.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="synopsis">Synopsis:</label>
+        <textarea id="synopsis" formControlName="synopsis" rows="4" required></textarea>
+        <div *ngIf="editMovieForm.get('synopsis').touched && editMovieForm.get('synopsis').errors" class="error-message">
+          <small class="text-danger" *ngIf="editMovieForm.get('synopsis').errors['required']">Synopsis is required.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category">Category:</label>
+        <select id="category" formControlName="category" required>
+          <option value="">Select category</option>
+          <option value="Drama">Drama</option>
+          <option value="Action">Action</option>
+        </select>
+        <div *ngIf="editMovieForm.get('category').touched && editMovieForm.get('category').errors" class="error-message">
+          <small class="text-danger" *ngIf="editMovieForm.get('category').errors['required']">Category is required.</small>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!editMovieForm.valid">Update Movie</button>
+    </form>
+  </div>
+  

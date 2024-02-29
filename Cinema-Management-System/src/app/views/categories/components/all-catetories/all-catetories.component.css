@@ -1,0 +1,132 @@
+.main-content {
+  padding: 20px;
+}
+
+.btn-primary {
+  margin-bottom: 20px;
+}
+
+.table {
+  margin-bottom: 0; /* Remove default table bottom margin */
+}
+
+.table th,
+.table td {
+  vertical-align: middle; /* Center content vertically */
+}
+
+.table thead th {
+  border-color: #dee2e6; /* Table header border color */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f2f2f2; /* Hover color for table rows */
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/* Create new button */
+.create-new-button {
+  margin-bottom: 20px;
+  background-color: #198754;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-new-button:hover {
+  background-color: #155724;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 12px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table th {
+  background-color: #198754;
+  color: #fff;
+  text-align: left;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.table tbody tr:hover {
+  background-color: #e2e6ea;
+}
+
+/* Delete Modal */
+.delete-modal {
+  background-color: #fff;
+  border: 1px solid lightgrey;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 20px 20px lightgrey;
+}
+
+.delete-modal-header {
+  border-bottom: 1px solid lightgrey;
+  padding: 15px;
+}
+
+.delete-modal-header-title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.delete-modal-footer {
+  border-top: 1px solid lightgray;
+  padding: 15px;
+  text-align: center;
+}
+
+.delete-modal-footer button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-modal-footer button.delete-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.delete-modal-footer button.delete-button:hover {
+  background-color: #c82333;
+}
+
+.delete-modal-footer button.create-new-button {
+  background-color: #198754;
+  color: #fff;
+}
+
+.delete-modal-footer button.create-new-button:hover {
+  background-color: #155724;
+}
+
+/* Delete Modal Content */
+.delete-modal-content {
+  text-align: center;
+  padding: 20px;
+}
